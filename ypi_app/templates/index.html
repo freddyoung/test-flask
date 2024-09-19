@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Property Management{% endblock %}
+
+{% block content %}
+<!-- Services Overview Section with Icons -->
+<section class="services-overview">
+    <div class="container">
+        <h2>Our Services</h2>
+        <div class="services-list">
+            <a href="{{ url_for('services') }}" class="service-item">
+                <img src="{{ url_for('static', filename='images/manage.png') }}" alt="Property Management">
+                <p>Property Management</p>
+            </a>
+            <a href="{{ url_for('services') }}" class="service-item">
+                <img src="{{ url_for('static', filename='images/construction.png') }}" alt="Construction Services">
+                <p>Construction Services</p>
+            </a>
+            <a href="{{ url_for('services') }}" class="service-item">
+                <img src="{{ url_for('static', filename='images/ppp.png') }}" alt="Maintenance & Repairs">
+                <p>Maintenance & Repairs</p>
+            </a>
+            <a href="{{ url_for('services') }}" class="service-item">
+                <img src="{{ url_for('static', filename='images/qqq.png') }}" alt="Tenant Relations">
+                <p>Tenant Relations</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="{{ url_for('static', filename='images/m1.jpg') }}" alt="Construction Image 1" class="w-full h-auto">
+        </div>
+        <div class="swiper-slide">
+            <img src="{{ url_for('static', filename='images/m2.jpg') }}" alt="Construction Image 2" class="w-full h-auto">
+        </div>
+        <div class="swiper-slide">
+            <img src="{{ url_for('static', filename='images/m3.jpg') }}" alt="Maintenance Image 1" class="w-full h-auto">
+        </div>
+        <div class="swiper-slide">
+            <img src="{{ url_for('static', filename='images/m4.jpg') }}" alt="Maintenance Image 1" class="w-full h-auto">
+        </div>
+    </div>
+    
+
+    <!-- Swiper pagination dots -->
+    <div class="swiper-pagination"></div>
+</section>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var swiper = new Swiper('.swiper-container', {
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,   // Enables clicking on dots to navigate
+            },
+            autoplay: {
+                delay: 3000, // Automatically transition every 3 seconds
+            },
+        });
+    });
+</script>
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const services = document.querySelectorAll('.service-item');
+
+        function handleScroll() {
+            services.forEach(service => {
+                const serviceTop = service.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                // When the service is in view, add the "show" class
+                if (serviceTop < windowHeight - 100) {
+                    service.classList.add('show');
+                }
+            });
+        }
+
+        // Trigger the fade-in when the page loads and on scroll
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Run once to catch elements already in view
+    });
+</script>
+
+{% endblock %}

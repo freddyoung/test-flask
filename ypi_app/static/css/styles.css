@@ -1,0 +1,468 @@
+* {
+    box-sizing: border-box;
+    max-width: 100vw;
+}
+section {
+    margin-right: 0;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.element {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%; /* Ensure element is confined to the viewport */
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+/* General Styles */
+html, body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+}
+@font-face {
+    font-family: 'Ogg';
+    src: url('/static/fonts/Ogg-Medium-BF646c18fc45bd0.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body.default-page main {
+    padding-top: 80px;
+}
+/* Center content and constrain width */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navbar styles for homepage */
+.navbar-home {
+    background-color: transparent;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid transparent; /* Fallback for older browsers */
+    border-image: linear-gradient(to right, transparent, #C0C0C0, transparent) 1;
+    transition: background-color 0.1s ease, color 0.01s ease;
+}
+
+.navbar-home.scrolled {
+    background-color: #ffffff; /* White background after scroll */
+    color: #16b34d; /* Green text after scroll */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar styles for other pages */
+.navbar-default {
+    background-color: #ffffff; /* White background */
+    color: #16b34d; /* Green text */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo styles */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 50px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+header.scrolled .logo-container img {
+    height: 50px;
+}
+
+.company-name {
+    font-size: 18px;
+    color: white; /* Inherit color based on the navbar state */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+}
+
+header.scrolled .company-name {
+    color: #16b34d; /* Green after scrolling */
+}
+
+body.default-page .company-name {
+    color: #16b34d; /* Green on non-home pages */
+}
+
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Navigation Menu */
+.main-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    text-align: center;
+    
+}
+
+.main-nav ul li {
+    display: block;
+    width: 100%;
+}
+
+.main-nav ul li a {
+    color: inherit; /* Inherit navbar color */
+    text-decoration: none;
+    font-weight: 550;
+    position: relative;
+    transition: color 0.05s ease;
+}
+
+/* Fix underline effect per link */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: currentColor; /* Match underline to link color */
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+header.scrolled nav ul li a::after {
+    background-color: #16b34d; /* Green underline after scrolling */
+}
+
+/* Burger Menu */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    position: relative;
+}
+
+.burger-menu span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white; /* Initially white */
+
+    transition: all 0.3s ease;
+    position: relative;
+}
+.burger-menu.open span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 8px; /* Adjust positioning to keep it centered */
+    position: absolute;
+}
+
+.burger-menu.open span:nth-child(2) {
+    opacity: 0; /* Hide the middle line */
+}
+
+.burger-menu.open span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 8px; /* Adjust positioning to keep it centered */
+    position: absolute;
+}
+
+header.scrolled .burger-menu span {
+    background-color: #16b34d; /* Green after scrolling */
+}
+
+/* Burger menu color for other pages (always green) */
+body.default-page .burger-menu span {
+    background-color: #16b34d; /* Green burger menu */
+}
+
+/* Hero section for homepage */
+.hero-background {
+    background-image: url('../images/bgk10.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+
+}
+
+.hero-content h1 {
+    font-size: 38px;
+    font-style: italic;
+    font-family: 'Ogg', serif;
+    margin-top: -25px;
+    margin-bottom: 10px;
+    font-weight:bolder;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+/* Button styling for "Make An Enquiry Today!" */
+/* Button styling for "Make An Enquiry Today!" */
+.btn-enquiry {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #16b34d; /* Transparent background */
+    color: #ffffff; /* Green text */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid #16b34d; /* Green border */
+    border-radius: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+/* Hover effect for the button */
+.btn-enquiry:hover {
+    background-color: #11b44ac5; /* Green background on hover */
+    color: white; /* White text on hover */
+}
+
+
+/* Main Content */
+main {
+    padding: 40px 20px;
+    flex: 1;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #128239;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+
+    margin-top: 100%;
+}
+
+footer a {
+    color: #f0f0f0;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+/* Mobile and Tablet View Styles */
+@media (max-width: 768px) {
+    /* Homepage dropdown background is green */
+    body.homepage .main-nav ul {
+        background-color: white; /* Green background for dropdown */
+        color: #16b34d; /* White text for the dropdown */
+    }
+
+    /* Other pages dropdown background is white */
+    body.default-page .main-nav ul {
+        background-color: #ffffff; /* White background for dropdown */
+        color: #16b34d; /* Green text for dropdown links */
+    }
+
+    .main-nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        border-bottom: 1px solid #16b34d;
+    }
+
+    .main-nav ul.dropdown-visible {
+        display: flex;
+    }
+
+    .main-nav ul li a {
+        color: inherit; /* Inherit color based on page */
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    .burger-menu span {
+        background-color: white;
+    }
+
+    header.scrolled .burger-menu span {
+        background-color: #16b34d;
+    }
+}
+
+
+.services-overview {
+    text-align: center;
+    padding: 40px 0;
+    margin-top: -20px;
+}
+
+.services-overview h2 {
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: #333;
+    margin-top: -20px;
+}
+
+.services-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px; /* Spacing between services */
+    text-align: center;
+
+}
+
+.service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+}
+
+.service-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-item img {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+.service-item:hover img {
+    transform: scale(1.1);
+}
+
+.service-item p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #16b34d;
+    margin: 0;
+}
+
+.service-item:hover p {
+    color: #138d3e; /* Darker green on hover */
+}
+
+/* Ensure the Swiper container has a relative position */
+.swiper-container {
+    position: relative; /* Ensure the buttons stay inside the slider */
+    width: 80%;         /* Adjust width to 80% of the page */
+    max-width: 1200px;  /* Optional: set a max width */
+    height: 400px;      /* Set a fixed height for the slider */
+    margin: 0 auto;     /* Center the slider horizontally */
+    overflow: hidden;   /* Prevent overflow */
+    padding-top: 20px;
+}
+
+/* Adjust navigation buttons */
+.swiper-button-next, .swiper-button-prev {
+    color: #fff;       /* Ensure buttons are visible */
+    position: absolute;
+    top: 50%;          /* Center vertically */
+    width: 40px;
+    height: 40px;
+    margin-top: -20px; /* Adjust based on button size */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 50%; /* Make buttons round */
+}
+
+.swiper-button-next {
+    right: 10px;       /* Position on the right */
+}
+
+.swiper-button-prev {
+    left: 10px;        /* Position on the left */
+}
+
+/* Optional hover effect */
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Darker on hover */
+}
+/* Adjust the images in the swiper slides */
+.swiper-slide img {
+    width: 100%;       /* Make the image responsive */
+    height: 100%;      /* Ensures the image fills the container */
+    object-fit: contain; /* Use 'contain' to fit the image without zooming */
+    max-height: 100%;  /* Prevent the image from being too large */
+}
+
+/* Adjust the swiper pagination dots */
+/* Override the default Swiper pagination dots with higher specificity */
+.swiper-container .swiper-pagination-bullet {
+    background-color: #16b34d !important; /* Green for the dots */
+    opacity: 0.5; /* Make them slightly transparent */
+}
+
+.swiper-container .swiper-pagination-bullet-active {
+    background-color: #128239 !important; /* Darker green for the active dot */
+    opacity: 1; /* Fully opaque active dot */
+}
+
+
+
